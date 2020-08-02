@@ -14,12 +14,12 @@ function Login(props) {
   const referer = props.location.state.referer || '/';
 
   function postLogin() {
-    axios.post("https://www.somePlace.com/auth/login", {
-      userName,
+    axios.post("https://reqres.in/api/login", {
+      email: userName,
       password
     }).then(result => {
       if (result.status === 200) {
-        setAuthTokens(result.data);
+        setAuthTokens(result.data.token);
         setLoggedIn(true);
       } else {
         setIsError(true);
